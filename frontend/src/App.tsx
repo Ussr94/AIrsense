@@ -389,9 +389,9 @@ function App() {
   return (
     <div className="app-shell">
       <aside className="sidebar">
-        <a className="brand" href="/" aria-label="Infoy home">
-          <span className="brand-mark">i</span>
-          <span>infoy<span className="brand-period">.</span></span>
+        <a className="brand" href="/" aria-label="AirSense home">
+          <span className="brand-mark">A</span>
+          <span>AirSense</span>
         </a>
         <div className="sidebar-label">WORKSPACE</div>
         <nav className="side-nav" aria-label="Main navigation">
@@ -612,7 +612,7 @@ function App() {
             </div>
             <span className="integration-tag">{apiState === 'offline' || influxState === 'offline' ? 'CHECK CONNECTION' : airReadings.length && weather ? 'DATA LOADED' : 'READY TO COLLECT'}</span>
           </section>
-          <footer className="page-footer"><span>INFOY ENVIRONMENTAL DASHBOARD</span><span>Local development preview · OpenAQ and InfluxDB data stored when loaded</span></footer>
+          <footer className="page-footer"><span>AIRSENSE ENVIRONMENTAL DASHBOARD</span><span>Local development preview · OpenAQ and InfluxDB data stored when loaded</span></footer>
         </div>
       </main>
     </div>
@@ -620,5 +620,6 @@ function App() {
 }
 
 export default App
+
 
 

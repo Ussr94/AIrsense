@@ -29,7 +29,7 @@ def photon_search(endpoint: str) -> dict:
         if wait_seconds > 0:
             time.sleep(wait_seconds)
         _photon_last_request = time.monotonic()
-        request = Request(endpoint, headers={"Accept": "application/json", "User-Agent": "InfoyEnvironmentalDashboard/1.0"}, method="GET")
+        request = Request(endpoint, headers={"Accept": "application/json", "User-Agent": "AirSenseEnvironmentalDashboard/1.0"}, method="GET")
         with urlopen(request, timeout=8) as response:
             return json.loads(response.read().decode("utf-8"))
 
@@ -54,7 +54,7 @@ def load_local_env() -> None:
 
 load_local_env()
 
-app = FastAPI(title="Infoy Environmental API", version="0.2.0")
+app = FastAPI(title="AirSense Environmental API", version="0.2.0")
 
 app.add_middleware(
     CORSMiddleware,
@@ -240,7 +240,7 @@ def get_driving_routes(
 ):
     coordinates = f"{from_longitude},{from_latitude};{to_longitude},{to_latitude}"
     endpoint = f"https://router.project-osrm.org/route/v1/driving/{coordinates}?{urlencode({'alternatives': '2', 'overview': 'full', 'geometries': 'geojson'})}"
-    request = Request(endpoint, headers={"Accept": "application/json", "User-Agent": "InfoyEnvironmentalDashboard/1.0"}, method="GET")
+    request = Request(endpoint, headers={"Accept": "application/json", "User-Agent": "AirSenseEnvironmentalDashboard/1.0"}, method="GET")
     try:
         with urlopen(request, timeout=25) as response:
             payload = json.loads(response.read().decode("utf-8"))
@@ -336,7 +336,7 @@ def parse_influx_csv(content: str) -> list[dict[str, str]]:
 
 @app.get("/health")
 def health_check():
-    return {"status": "ok", "service": "infoy-api"}
+    return {"status": "ok", "service": "airsense-api"}
 
 
 @app.get("/health/influxdb")
@@ -642,3 +642,4 @@ def get_route_air_quality(request: RouteAirRequest):
             "mean_pm25": round(sum(values) / len(values), 2) if values else None,
         })
     return {"source": "OpenAQ", "samples": samples, "routes": summaries}
+
