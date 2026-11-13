@@ -21,7 +21,7 @@ cd backend
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install -r requirements.txt
-Copy-Item .env.example .env
+Copy-Item ..\.env.example .env
 ```
 
 Open `backend/.env` and enter your own private API keys and InfluxDB settings. Never upload or share that file. Then start the backend:
@@ -45,3 +45,4 @@ Open the local address Vite prints, usually `http://localhost:5173/`.
 ## Git safety
 
 Commit `.env.example`, but never commit `.env`, API keys, passwords, tokens, `.venv`, `node_modules`, or `dist`. Git ignores those local files and folders.
+
